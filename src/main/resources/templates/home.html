@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<title>Lista de Vehiculos</title>
+</head>
+
+<style>
+	body {
+		height: 665px;
+		background-image: url(https://th.bing.com/th/id/R.51520ca916740f61f1e2c7c324fa0c11?rik=5AnHV7VXXbtRFQ&riu=http%3a%2f%2fwww.rentadeautosdf.com.mx%2fimages%2frenta-de-autos-DF.jpg&ehk=KcckXpi4kYBkj2hXsPSiEbhZTr7XofITcDvPuEF3r4Y%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1);
+		background-size: 10rem;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: 100% 100%;
+		background-color: transparent;
+	}
+
+	select {
+		width: 40%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+	label {
+		color: white;
+		padding: 8px;
+		font-family: Arial;
+	}
+
+	div {
+		background-image: url(https://th.bing.com/th/id/R.6004e613949e69ed3316509d7a1da3a6?rik=yMkQz4eTQ2qO%2bw&pid=ImgRaw&r=0);
+		border-radius: 10px;
+		background-color: #FFFFFF;
+		padding: 20px;
+		width: 30%;
+	}
+</style>
+
+
+<body>
+
+	<img src="https://th.bing.com/th/id/R.bf46ff8fdb67d6d3ab010d0ada9a181f?rik=%2b2Dd3EPXMWuoSA&riu=http%3a%2f%2fwww.pgairport.ca%2fwp-content%2fuploads%2f2016%2f01%2fbudgetLogoNew1-1.png&ehk=Pgjw5QiamFAQttJSrd6XQqLZXkzHlXt92tKTjtEOjTs%3d&risl=&pid=ImgRaw&r=0"
+		width="400" height="171">
+	<center>
+		<div>
+			<h5>
+				<center> <b>
+						<font color="orange" face="Arial" size="6"> RENTA DE CARROS
+					</b> </font>
+				</center>
+			</h5>
+			<p>
+				<center>
+					<font color="white" face="Calibri" size="5"> Seleccione la marca y el modelo del Vehículo </font>
+				</center>
+			<p>
+				<center>
+
+					<label>
+						<font color="orange" face="Arial" size="6"> Marca: </font>
+					</label>
+					<select name="marcas" id="mar">
+						<option th:each="vmarca:${vehiculosMarca}" th:value="${vma}" th:text="${vmarca.campo}">
+						</option>
+					</select> <br> <br>
+					<label>
+						<font color="orange" face="Arial" size="6"> Modelo: </font>
+					</label>
+					<select name="modelos" id="mod">
+						<option th:each="vmodelo:${vehiculosModelo}" th:value="${vmo}" th:text="${vmodelo.campo}">
+						</option>
+					</select> <br> <br>
+					<form action="#"
+						th:action="@{/clientes/buscarVehiculos/{marca}(marca=${vma})/{modelo}(modelo=${vmo})}"
+						th:object="${vehiculoLigero}" th:method="GET">
+						<input type="submit" value="BUSCAR" class="btn btn-info">
+					</form>
+				</center>
+		</div>
+	</center>
+	</img>
+</body>
+
+</html>

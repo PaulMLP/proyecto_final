@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<title>Lista de Personas</title>
+</head>
+<script>
+	// Get the modal
+	var modal = document.getElementById('id01');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+</script>
+<style>
+	#body1 {
+		height: 65px;
+		background-size: 10rem;
+		background-attachment: fixed;
+		background-size: 100% 100%;
+		background-color: #FFFFFF;
+	}
+
+	#customers {
+		font-family: Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 50%;
+	}
+
+	#customers td,
+	#customers th {
+		border: 1px solid #ddd;
+		padding: 8px;
+	}
+
+	/*DARLE SOBMBRA A LAS CELDAS DE LA TABLA*/
+	#customers tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+
+	#customers tr:hover {
+		background-color: #A0FF71;
+	}
+
+	#customers th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #F08F12;
+		color: black;
+	}
+
+	#body2 {
+		margin: 0;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	.topnav {
+		overflow: hidden;
+		background-color: #0A93F0;
+	}
+
+	.topnav a {
+		float: left;
+		color: #f2f2f2;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 17px;
+	}
+
+	.topnav a:hover {
+		background-color: #ddd;
+		color: black;
+	}
+
+	.topnav a.active {
+		background-color: #F08F12;
+		color: black;
+	}
+
+	/* CUERPO DE CUADRO REGISTRO */
+	#body3 {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	/* CUADRO DE ENTRADA DE CEDULA */
+	input[type=text] {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+	}
+
+	/* BOTONES DE REGISTRO - ACTUALIZAR */
+	button {
+		background-color: #0A93F0;
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: active;
+		cursor: pointer;
+		width: 20%;
+	}
+
+	.btn {
+		background-color: #F08F12;
+		float: right;
+		color: black;
+		position: absolute;
+		right: 15px;
+	}
+
+	button:hover {
+		opacity: 0.8;
+	}
+
+	/* BOTON DE CANCELAR */
+	.cancelbtn {
+		width: auto;
+		padding: 10px 18px;
+		background-color: #f44336;
+	}
+
+	/* Center the image and position the close button */
+	.imgcontainer {
+		text-align: center;
+		margin: 24px 0 12px 0;
+		position: relative;
+	}
+
+	img.avatar {
+		width: 15%;
+		height: 15%;
+		border-radius: 50%;
+	}
+
+	.container {
+		padding: 16px;
+	}
+
+	span.psw {
+		float: right;
+		padding-top: 16px;
+	}
+
+	/* The Modal (background) */
+	.modal {
+		display: none;
+		/* Hidden by default */
+		position: fixed;
+		/* Stay in place */
+		z-index: 1;
+		/* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%;
+		/* Full width */
+		height: 100%;
+		/* Full height */
+		overflow: auto;
+		/* Enable scroll if needed */
+		background-color: rgb(0, 0, 0);
+		/* Fallback color */
+		background-color: rgba(0, 0, 0, 0.4);
+		/* Black w/ opacity */
+		padding-top: 60px;
+	}
+
+	/* CUADRO DE REGISTRO Y ACTUALIZACION */
+	.modal-content {
+		background-color: #C3F047;
+		margin: 5% auto 15% auto;
+		/* 5% from the top, 15% from the bottom and centered */
+		border: 1px solid #888;
+		width: 35%;
+		/* Could be more or less, depending on screen size */
+	}
+
+	/* BOTON DE CERRAR (x) */
+	.close {
+		position: absolute;
+		right: 25px;
+		top: 0;
+		color: #000;
+		font-size: 35px;
+		font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: red;
+		cursor: pointer;
+	}
+
+	/* Add Zoom Animation */
+	.animate {
+		-webkit-animation: animatezoom 0.6s;
+		animation: animatezoom 0.6s
+	}
+
+	@-webkit-keyframes animatezoom {
+		from {
+			-webkit-transform: scale(0)
+		}
+
+		to {
+			-webkit-transform: scale(1)
+		}
+	}
+
+	@keyframes animatezoom {
+		from {
+			transform: scale(0)
+		}
+
+		to {
+			transform: scale(1)
+		}
+	}
+
+	/* Change styles for span and cancel button on extra small screens */
+	@media screen and (max-width: 300px) {
+		span.psw {
+			display: block;
+			float: none;
+		}
+
+		.cancelbtn {
+			width: 100%;
+		}
+	}
+</style>
+
+<body id="body1">
+
+	<body id="body2">
+		<div class="topnav">
+			<a class="active" href="#carrosDisponibles">
+				<font color="black" face="Arial" size="3"> <b> Carros Disponibles </b> </font>
+			</a>
+
+			<body id="body3">
+				<button class="btn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+					<font color="black" face="Arial" size="3"> <b> Registrarse </b> </font>
+				</button>
+
+				<div id="id01" class="modal">
+
+					<form class="modal-content animate" action="/action_page.php" method="post">
+						<div class="imgcontainer">
+							<span onclick="document.getElementById('id01').style.display='none'" class="close"
+								title="Close Modal">&times;</span>
+							<img src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
+								alt="Avatar" class="avatar">
+						</div>
+
+						<div class="container">
+							<label for="uname"><b>Número de Cédula</b></label>
+							<input type="text" placeholder="Ingrese su cédula" name="cedula" required>
+							<center>
+								<button type="submit">
+									<font color="black" face="Arial" size="4"> Registrarse </font>
+								</button>
+								<button type="submit">
+									<font color="black" face="Arial" size="4"> Actualizar</font>
+								</button>
+							</center>
+						</div>
+
+						<div class="container" style="background-color:#f1f1f1">
+							<button type="button" onclick="document.getElementById('id01').style.display='none'"
+								class="cancelbtn">Cancel</button>
+						</div>
+					</form>
+				</div>
+			</body>
+		</div> <br>
+		<center>
+			<h3>
+				<center> VEHÍCULOS DISPONIBLES <center>
+			</h3> <br>
+			<table id="customers">
+			<thead>
+				<tr>
+					<th>
+						<center>Placa</center>
+					</th>
+					<th>
+						<center>Modelo</center>
+					</th>
+					<th>
+						<center>Marca</center>
+					</th>
+					<th>
+						<center>Año</center>
+					</th>
+					<th>
+						<center>Estado</center>
+					</th>
+					<th>
+						<center>Valor por Día</center>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="vehiculo:${vehiculos}">
+				<td th:text="${vehiculo.placa}"></td>
+				<td th:text="${vehiculo.modelo}"></td>
+				<td th:text="${vehiculo.marca}"></td>
+				<td th:text="${vehiculo.anioFabricacion}"></td>
+				<td th:text="${vehiculo.estado}"></td>
+				<td th:text="${vehiculo.valorDia}"></td>
+			</tbody>
+			</table>
+		</center>
+
+	</body>
+</body>
+
+</html>
