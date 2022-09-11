@@ -22,4 +22,6 @@ public interface IClienteGestorService {
 	public Cobro calculoCobro(int dias, BigDecimal valor);
 
 	public String fechaDisponible(Vehiculo vehiculo, LocalDateTime fechaInicio, LocalDateTime fechaFin);
+
+	public boolean datosValidos(String placa, String cedula);
 }

@@ -32,4 +32,5 @@ public interface IVehiculoService {
 
 	public void ingresarVehiculo(String placa, String modelo, String marca, Integer anioFabricacion,
 			String paisFabricacion, String cilindraje, BigDecimal avaluo, BigDecimal valorPorDia);
+
 }

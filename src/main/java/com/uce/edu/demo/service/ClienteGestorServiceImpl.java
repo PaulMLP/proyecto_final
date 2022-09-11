@@ -31,8 +31,7 @@ public class ClienteGestorServiceImpl implements IClienteGestorService {
 	@Autowired
 	private IReservaRepository reservaRepository;
 
-
-	//1.b
+	// 1.b
 	@Override
 	public void registrarReserva(Reserva reserva, String tarjeta) {
 		// TODO Auto-generated method stub
@@ -51,23 +50,38 @@ public class ClienteGestorServiceImpl implements IClienteGestorService {
 
 		Cliente cliente = this.clienteRepository.buscarClientePorCedula(cedula);
 		Vehiculo vehiculo = this.vehiculoRepository.buscarPorPlaca(placa);
+		if ((vehiculo != null) && (cliente != null)) {
+			Cobro cobro = calculoCobro(compararFechas(fechaInicio, fechaFin), vehiculo.getValorDia());
 
-		Cobro cobro = calculoCobro(compararFechas(fechaInicio, fechaFin), vehiculo.getValorDia());
+			if ((vehiculoFechaReserva(vehiculo, fechaInicio, fechaFin) != null)) {
+				reserva.setVehiculo(vehiculo);
+				reserva.setCliente(cliente);
+				reserva.setCobro(cobro);
 
-		if ((vehiculoFechaReserva(vehiculo, fechaInicio, fechaFin) != null)) {
-			reserva.setVehiculo(vehiculo);
-			reserva.setCliente(cliente);
-			reserva.setCobro(cobro);
+				reserva.setFechaInicio(fechaInicio);
+				reserva.setFechaFin(fechaFin);;
+				return reserva;
 
-			reserva.setFechaInicio(fechaInicio);
-			reserva.setFechaFin(fechaFin);
-			return reserva;
-
-		} else {
+			} else {
+				return null;
+			}
+		}else {
 			return null;
 		}
+
 	}
 	
+	@Override
+	public boolean datosValidos(String placa, String cedula) {
+		Cliente cliente = this.clienteRepository.buscarClientePorCedula(cedula);
+		Vehiculo vehiculo = this.vehiculoRepository.buscarPorPlaca(placa);
+		if ((vehiculo != null) && (cliente != null)) {
+			return true;
+		}else {
+			return false;
+		}
+	}	
+
 	@Override
 	public Vehiculo vehiculoFechaReserva(Vehiculo vehiculo, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
 

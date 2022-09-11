@@ -65,24 +65,22 @@
 				</center>
 			<p>
 				<center>
+					<form action="#" th:action="@{/clientes/buscar/vehiculos}" th:method="GET">
+						<label>
+							<font color="orange" face="Arial" size="6"> Marca: </font>
+						</label>
+						<select id="marca" name=marca>
+							<option th:each="vmarca:${vehiculosMarca}" th:text="${vmarca.campo}"></option>
+						</select> <br />
+						<br />
+						<br />
+						<label>
+							<font color="orange" face="Arial" size="6"> Modelo: </font>
+						</label>
+						<select id="modelo" name=modelo>
+							<option th:each="vmodelo:${vehiculosModelo}" th:text="${vmodelo.campo}"> </option>
+						</select> <br />
 
-					<label>
-						<font color="orange" face="Arial" size="6"> Marca: </font>
-					</label>
-					<select name="marcas" id="mar">
-						<option th:each="vmarca:${vehiculosMarca}" th:value="${vma}" th:text="${vmarca.campo}">
-						</option>
-					</select> <br> <br>
-					<label>
-						<font color="orange" face="Arial" size="6"> Modelo: </font>
-					</label>
-					<select name="modelos" id="mod">
-						<option th:each="vmodelo:${vehiculosModelo}" th:value="${vmo}" th:text="${vmodelo.campo}">
-						</option>
-					</select> <br> <br>
-					<form action="#"
-						th:action="@{/clientes/buscarVehiculos/{marca}(marca=${vma})/{modelo}(modelo=${vmo})}"
-						th:object="${vehiculoLigero}" th:method="GET">
 						<input type="submit" value="BUSCAR" class="btn btn-info">
 					</form>
 				</center>

@@ -28,11 +28,6 @@ public class VehiculoServiceImpl implements IVehiculoService {
 	}
 
 	@Override
-	public List<VehiculoLigero> buscarLigero(String marca, String modelo) {
-		return this.vehiculoRepository.buscarLigero(marca, modelo);
-	}
-
-	@Override
 	public Vehiculo buscarPorPlaca(String placa) {
 		return this.vehiculoRepository.buscarPorPlaca(placa);
 	}
@@ -110,6 +105,18 @@ public class VehiculoServiceImpl implements IVehiculoService {
 
 		this.vehiculoRepository.insertar(vehiculo);
 
+	}
+	
+	@Override
+	public List<VehiculoLigero> buscarLigero(String marca, String modelo) {
+		List<VehiculoLigero> lista = this.vehiculoRepository.buscarLigero(marca, modelo);
+		List<VehiculoLigero> listaCambiada = lista.parallelStream().map(vehiculo -> {
+			vehiculo.setValorCadena("$"+vehiculo.getValorDia());
+			if(vehiculo.getEstado().equalsIgnoreCase("D")) vehiculo.setEstado("Disponible");
+			else vehiculo.setEstado("No Disponible");
+			return vehiculo;}).collect(Collectors.toList());
+		
+		return listaCambiada;
 	}
 
 }

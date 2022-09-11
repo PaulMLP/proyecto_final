@@ -15,6 +15,8 @@ public class VehiculoLigero {
 	private String estado;
 
 	private BigDecimal valorDia;
+	
+	private String valorCadena;
 
 	public VehiculoLigero() {
 		// TODO Auto-generated constructor stub
@@ -78,6 +80,14 @@ public class VehiculoLigero {
 
 	public void setValorDia(BigDecimal valorDia) {
 		this.valorDia = valorDia;
+	}
+
+	public String getValorCadena() {
+		return valorCadena;
+	}
+
+	public void setValorCadena(String valorCadena) {
+		this.valorCadena = valorCadena;
 	}
 
 }

@@ -20,6 +20,8 @@
 		}
 	}
 </script>
+
+
 <style>
 	#body1 {
 		height: 65px;
@@ -110,12 +112,22 @@
 		margin: 8px 0;
 		border: active;
 		cursor: pointer;
-		width: 20%;
+		width: 40%;
+	}
+
+	.btnRes {
+		background-color: #F08F12;
+		border: none;
+		float: none;
+		text-align: center;
+		border-radius: 4px;
+		color: black;	
 	}
 
 	.btn {
 		background-color: #F08F12;
 		float: right;
+		text-align: center;
 		color: black;
 		position: absolute;
 		right: 15px;
@@ -149,10 +161,6 @@
 		padding: 16px;
 	}
 
-	span.psw {
-		float: right;
-		padding-top: 16px;
-	}
 
 	/* The Modal (background) */
 	.modal {
@@ -251,10 +259,10 @@
 			</a>
 
 			<body id="body3">
-				<button class="btn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+				<button class="btn" id="btnReg" onclick="document.getElementById('id01').style.display='block'"
+					style="width:auto;">
 					<font color="black" face="Arial" size="3"> <b> Registrarse </b> </font>
 				</button>
-
 				<div id="id01" class="modal">
 
 					<form class="modal-content animate" action="/action_page.php" method="post">
@@ -291,40 +299,47 @@
 				<center> VEHÍCULOS DISPONIBLES <center>
 			</h3> <br>
 			<table id="customers">
-			<thead>
-				<tr>
-					<th>
-						<center>Placa</center>
-					</th>
-					<th>
-						<center>Modelo</center>
-					</th>
-					<th>
-						<center>Marca</center>
-					</th>
-					<th>
-						<center>Año</center>
-					</th>
-					<th>
-						<center>Estado</center>
-					</th>
-					<th>
-						<center>Valor por Día</center>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="vehiculo:${vehiculos}">
-				<td th:text="${vehiculo.placa}"></td>
-				<td th:text="${vehiculo.modelo}"></td>
-				<td th:text="${vehiculo.marca}"></td>
-				<td th:text="${vehiculo.anioFabricacion}"></td>
-				<td th:text="${vehiculo.estado}"></td>
-				<td th:text="${vehiculo.valorDia}"></td>
-			</tbody>
+				<thead>
+					<tr>
+						<th>
+							<center>Placa</center>
+						</th>
+						<th>
+							<center>Modelo</center>
+						</th>
+						<th>
+							<center>Marca</center>
+						</th>
+						<th>
+							<center>Año</center>
+						</th>
+						<th>
+							<center>Estado</center>
+						</th>
+						<th>
+							<center>Valor por Día</center>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="vehiculo:${vehiculos}">
+						<td th:text="${vehiculo.placa}"></td>
+						<td th:text="${vehiculo.modelo}"></td>
+						<td th:text="${vehiculo.marca}"></td>
+						<td th:text="${vehiculo.anioFabricacion}"></td>
+						<td th:text="${vehiculo.estado}"></td>
+						<td th:text="${vehiculo.valorCadena}"></td>
+					</tr>
+				</tbody>
 			</table>
 		</center>
-
+		<form action="#" th:action="@{/clientes/buscar/reserva}" th:method="GET">
+			<center>
+				<button class="btnRes" id="btnRes" style="width:auto;">
+					<font color="black" face="Arial" size="3"> <b> Reservar </b> </font>
+				</button>
+			</center>
+		</form>
 	</body>
 </body>
 
