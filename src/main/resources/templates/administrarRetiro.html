@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="icon" href="https://th.bing.com/th/id/OIP.3_49KiqjXFr8vt9uCUrmegHaGB?pid=ImgDet&rs=1">
+	<title>Lista de Vehiculos</title>
+</head>
+
+<style>
+	body {
+		height: 665px;
+		background: linear-gradient(180deg, rgb(120, 145, 243) 5%, rgb(0, 32, 64) 100%);
+		background-size: 10rem;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: 100% 100%;
+
+	}
+
+	select {
+		width: 40%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+	label {
+		color: white;
+		padding: 8px;
+		font-family: Arial;
+	}
+
+	#div {
+		background: linear-gradient(180deg, rgb(255, 123, 60) 0%, #A66289 100%);
+		border-radius: 10px;
+		background-color: #D2F5DE;
+		border: 3px solid black;
+		padding: 20px;
+		width: 30%;
+	}
+
+	#div2 {
+		background: linear-gradient(180deg, rgb(183, 255, 255) 0%, rgb(83, 255, 83) 100%);
+		border-radius: 10px;
+		background-color: #F5D6A6;
+		border: 3px solid black;
+		padding: 20px;
+		width: 30%;
+	}
+
+	#div3 {
+		background: linear-gradient(180deg, rgb(255, 96, 96) 0%, rgb(200, 0, 0) 100%);
+		border-radius: 10px;
+		background-color: #F5B50C;
+		border: 3px solid black;
+		padding: 20px;
+		width: 30%;
+	}
+</style>
+
+
+<body>
+	<br>
+	<center>
+		<img src="https://www.budget.com/budgetWeb/images/newlayout/budgetLogoNew1.png" width="400" height="171">
+		<center>
+			<div class="container" id="div">
+				<h3>
+					<center> <b>
+							<font face="Segoe UI" size="5">RETIRAR UN VEHÍCULO CON RESERVA
+						</b> </font>
+					</center>
+				</h3>
+				<form action="#" th:action="@{/empleados/vehiculo/con/reserva}" th:method="GET">
+					<center> <input type="submit" value="Retirar" class="btn btn-success"></center>
+				</form>
+			</div><br>
+			<div class="container" id="div3">
+				<h3>
+					<center> <b>
+							<font face="Segoe UI" size="5">RETIRAR UN VEHÍCULO SIN RESERVA
+						</b> </font>
+					</center>
+				</h3>
+				<form action="#" th:action="@{/empleados/buscar/vehiculos/marca/modelo}" th:method="GET">
+					<center> <input type="submit" value="Retirar" class="btn btn-success"></center>
+				</form>
+			</div>
+		</center>
+		</img>
+	</center>
+</body>
+
+</html>

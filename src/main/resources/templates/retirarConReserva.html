@@ -25,7 +25,7 @@
 	textarea {
 		width: 100%;
 		padding: 12px;
-		border: 2px solid #0300E0;
+		border: 2px solid rgb(142, 225, 232);
 		border-radius: 10px;
 		box-sizing: border-box;
 		margin-top: 6px;
@@ -56,12 +56,12 @@
 	}
 
 	input[type=submit]:hover {
-		background-color: #FC2847;
+		background-color: rgb(253, 132, 150);
 	}
 
 	.container {
 		border-radius: 10px;
-		background-color: #3A74FC;
+		background-color: rgb(177, 235, 223);
 		padding: 20px;
 		width: 40%;
 		height: 40%;
@@ -70,23 +70,22 @@
 		bottom: 25%;
 
 	}
-
 </style>
 
 <body>
 	<div class="container">
 		<h3>
 			<center> <b>
-					<font face="Segoe UI" size="5">BUSCAR POR APELLIDO
+					<font face="Segoe UI" size="5">RETIRAR VEHICULO
 				</b> </font>
 			</center>
 		</h3>
-		<form action="#" th:action="@{/empleados/cliente}" th:method="GET">
+		<form action="#" th:action="@{/empleados/info/vehiculo/con/reserva}" th:method="GET">
 			<label for="fname"> <b>
-					<font face="Segoe UI" size="5"> APELLIDO
+					<font face="Segoe UI" size="5"> Numero de Reserva
 				</b> </font></label>
-			<input type="text" id="apellido" name="apellido" placeholder="Ingrese apellido...">
-			<center> <input type="submit" value="BUSCAR POR APELLIDO"></center>
+			<input type="text" id="numero" name="numero" placeholder="Ingrese el numero de reserva...">
+			<center> <input type="submit" value="BUSCAR"></center>
 		</form>
 
 	</div>

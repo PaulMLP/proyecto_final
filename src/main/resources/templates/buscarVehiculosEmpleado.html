@@ -64,17 +64,26 @@
 			</h5>
 			<p>
 				<center>
-					<font color="white" face="Calibri" size="5"> Seleccione la marca del Vehículo </font>
+					<font color="white" face="Calibri" size="5"> Seleccione la marca y el modelo del Vehículo </font>
 				</center>
 			<p>
 				<center>
-					<form action="#" th:action="@{/empleados/listarMarca}" th:method="GET">
+					<form action="#" th:action="@{/empleados/buscar/vehiculos}" th:method="GET">
 						<label>
 							<font color="orange" face="Arial" size="6"> Marca: </font>
 						</label>
 						<select id="marca" name=marca>
 							<option th:each="vmarca:${vehiculosMarca}" th:text="${vmarca.campo}"></option>
 						</select> <br>
+						<br>
+						<br>
+						<label>
+							<font color="orange" face="Arial" size="6"> Modelo: </font>
+						</label>
+						<select id="modelo" name=modelo>
+							<option th:each="vmodelo:${vehiculosModelo}" th:text="${vmodelo.campo}"> </option>
+						</select> <br>
+
 						<input type="submit" value="BUSCAR" class="btn btn-info">
 					</form>
 				</center>

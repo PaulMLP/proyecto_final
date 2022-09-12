@@ -58,6 +58,7 @@ public class GestorEmpleadoServiceImpl implements IGestorEmpleadoService {
 	}
 
 	// 2.f Retirar Vehiculo sin Reserva
+	@Override
 	public String retirarVehiculoSinReserva(String placa, String cedula, LocalDateTime fechaInicio,
 			LocalDateTime fechaFin, String tarjeta) {
 		Reserva r = this.clienteGestorService.disponibilidad(placa, cedula, fechaInicio, fechaFin);

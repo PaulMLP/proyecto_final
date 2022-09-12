@@ -5,64 +5,197 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<title>Actualizar Cliente</title>
 </head>
 
+<style>
+	body {
+		font-family: Segoe UI;
+		font-size: 17px;
+		padding: 8px;
+		background-color: #FCFFD4;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.row {
+		display: -ms-flexbox;
+		/* IE10 */
+		display: flex;
+		-ms-flex-wrap: wrap;
+		/* IE10 */
+		flex-wrap: wrap;
+		margin: 0 -16px;
+	}
+
+	.col-25 {
+		-ms-flex: 25%;
+		/* IE10 */
+		flex: 25%;
+	}
+
+	.col-50 {
+		-ms-flex: 50%;
+		/* IE10 */
+		flex: 50%;
+	}
+
+	.col-75 {
+		-ms-flex: 75%;
+		/* IE10 */
+		flex: 75%;
+	}
+
+	.col-25,
+	.col-50,
+	.col-75 {
+		padding: 0 16px;
+	}
+
+	.container {
+		background: linear-gradient(180deg, rgb(0, 236, 236) 0%, rgb(0, 81, 81) 100%);
+		padding: 5px 20px 15px 20px;
+		border: 3px solid black;
+		border-radius: 10px;
+		position: absolute;
+		top: 5%;
+		bottom: 1%;
+		right: 100px
+	}
+
+	input[type=text] {
+		width: 100%;
+		margin-bottom: 20px;
+		padding: 12px;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+	}
+
+	label {
+		margin-bottom: 10px;
+		display: block;
+	}
+
+	.icon-container {
+		margin-bottom: 20px;
+		padding: 7px 0;
+		font-size: 24px;
+	}
+
+	.btn {
+		background-color: rgb(121, 251, 160);
+		color: black black;
+		padding: 12px;
+		margin: 10px 0;
+		border: none;
+		width: 60%;
+		border-radius: 10px;
+		cursor: pointer;
+		font-size: 20px;
+	}
+
+	.btn:hover {
+		background-color: rgb(0, 98, 0);
+	}
+
+	a {
+		color: #2196F3;
+	}
+
+	hr {
+		border: 1px solid lightgrey;
+	}
+
+	span.price {
+		float: right;
+		color: grey;
+	}
+
+	/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+	@media (max-width: 800px) {
+		.row {
+			flex-direction: column-reverse;
+		}
+
+		.col-25 {
+			margin-bottom: 20px;
+		}
+	}
+</style>
+
 <body>
-	<form th:action="@{/empleados}" th:object="${ingresarVehiculo}" th:method="POST">
-		<table>
-			<tr>
-				<td> <label> placa: </label></td>
-				<td> <input type="text" id="placa" value="Inserte codigo barras" th:field="${ingresarVehiculo.placa}">
-				</td>
-			</tr>
-			<tr>
-				<td> <label> modelo: </label></td>
-				<td> <input type="text" id="modelo" value="Inserte el nombre" th:field="${ingresarVehiculo.modelo}">
-				</td>
-			</tr>
-			<tr>
-				<td> <label> marca: </label></td>
-				<td> <input type="text" id="marca" value="Inserte el categoria" th:field="${ingresarVehiculo.marca}">
-				</td>
-			</tr>
-			<tr>
-				<td> <label> anioFabricacion: </label></td>
-				<td> <input type="text" id="anioFabricacion" value="Inserte el stock"
-						th:field="${ingresarVehiculo.anioFabricacion}"> </td>
-			</tr>
-			<tr>
-				<td> <label> paisFabricacion: </label></td>
-				<td> <input type="text" id="paisFabricacion" value="Inserte el precio"
-						th:field="${ingresarVehiculo.paisFabricacion}"> </td>
-			</tr>
-			<tr>
-				<td> <label> cilindraje: </label></td>
-				<td> <input type="text" id="cilindraje" value="Inserte el precio"
-						th:field="${ingresarVehiculo.cilindraje}"> </td>
-			</tr>
-			<tr>
-				<td> <label> avaluo: </label></td>
-				<td> <input type="text" id="avaluo" value="Inserte el precio" th:field="${ingresarVehiculo.avaluo}">
-				</td>
-			</tr>
-
-			<tr>
-				<td> <label> estado: </label></td>
-				<td> <input type="text" id="estado" value="Inserte el precio" th:field="${ingresarVehiculo.estado}">
-				</td>
-			</tr>
-
-			<tr>
-				<td> <label> valorDia: </label></td>
-				<td> <input type="text" id="valorDia" value="Inserte el precio" th:field="${ingresarVehiculo.valorDia}">
-				</td>
-			</tr>
-
-		</table>
-
-		<input type="submit" value="GUARDAR">
-	</form>
+	<div class="row">
+		<div class="col-75">
+			<div class="container">
+				<h2>
+					<center>
+						<font color="black"> INGRESAR NUEVO VEHÍCULO </font>
+					</center>
+				</h2><br>
+				<form th:action="@{/empleados/ingresar/vehiculo}" th:object="${ingresarVehiculo}" th:method="POST">
+					<div class="row">
+						<div class="col-50">
+							<label>
+								<font color="black" face="Segoe UI" size="5"> <b>Placa</b> </font>
+							</label>
+							<input type="text" id="placa" placeholder="Inserte la placa del vehículo..."
+								th:field="${ingresarVehiculo.placa}">
+							<label>
+								<font color="black" face="Segoe UI" size="5"> <b> Modelo </b> </font>
+							</label>
+							<input type="text" id="modelo" th:field="${ingresarVehiculo.modelo}"
+								placeholder="Ingrese modelo...">
+							<label>
+								<font color="black" face="Segoe UI" size="5"> <b> Marca </b></font>
+							</label>
+							<input type="text" id="placa" placeholder="Inserte la marca del vehículo..."
+								th:field="${ingresarVehiculo.marca}">
+							<label>
+								<font color="black" face="Segoe UI" size="5"> <b> Estado </b></font>
+							</label>
+							<input type="text" id="placa" placeholder="Inserte estado del vehículo..."
+								th:field="${ingresarVehiculo.estado}">
+						</div>
+						<div class="col-50">
+							<label>
+								<font color="black" face="Segoe UI" size="5"> <b> Año de Fabricación </b></font>
+							</label>
+							<input type="text" id="placa" placeholder="Inserte el año del vehículo..."
+								th:field="${ingresarVehiculo.anioFabricacion}">
+							<label>
+								<font color="black" face="Segoe UI" size="5"> <b> País Fabricación </b></font>
+							</label>
+							<input type="text" id="paisFabricacion"
+								th:field="${ingresarVehiculo.paisFabricacion}" placeholder="Ingrese pais...">
+							<label>
+								<font color="black" face="Segoe UI" size="5"> <b> Cilindraje </b></font>
+							</label>
+							<input type="text" id="paisFabricacion"
+								th:field="${ingresarVehiculo.cilindraje}" placeholder="Ingrese cilindraje..">
+							<label>
+								<font color="black" face="Segoe UI" size="5"> <b> Avaluo </b></font>
+							</label>
+							<input type="text" id="paisFabricacion" 
+								th:field="${ingresarVehiculo.avaluo}" placeholder="Ingrese avaluo...">
+						</div>
+						<center>
+							<label>
+								<font color="black" face="Segoe UI" size="5"> <b> Valor por Día </b></font>
+							</label>
+							<input type="text" id="paisFabricacion" name="paisFabricacion"
+								th:field="${ingresarVehiculo.valorDia}" placeholder="Ingrese valor día...">
+						</center>
+					</div>
+					<center>
+						<input type="submit" value="REGISTRAR" class="btn">
+					</center>
+				</form>
+			</div>
+		</div>
 </body>
 
 </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="icon" href="https://th.bing.com/th/id/OIP.3_49KiqjXFr8vt9uCUrmegHaGB?pid=ImgDet&rs=1">
+	<title>Lista de Vehiculos</title>
+</head>
+
+<style>
+	body {
+		height: 665px;
+		background-image: url(https://i.pinimg.com/originals/49/4c/6b/494c6b914a7842e7c0e18cb68d41255e.png);
+		background-size: 10rem;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: 100% 100%;
+		background-color: transparent;
+	}
+
+	select {
+		width: 40%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+	label {
+		color: white;
+		padding: 8px;
+		font-family: Arial;
+	}
+
+	#div {
+		background: linear-gradient(180deg, #65bce8 0%, #306485 100%);
+		border-radius: 10px;
+		background-color: #D2F5DE;
+		border: 3px solid black;
+		padding: 20px;
+		width: 30%;
+	}
+
+	#div2 {
+		background: linear-gradient(180deg, #D68818 0%, #D65C0B 100%);
+		border-radius: 10px;
+		background-color: #F5D6A6;
+		border: 3px solid black;
+		padding: 20px;
+		width: 30%;
+	}
+
+	#div3 {
+		background: linear-gradient(180deg, #fbde74 0%, #ff9900 100%);
+		border-radius: 10px;
+		background-color: #F5B50C;
+		border: 3px solid black;
+		padding: 20px;
+		width: 30%;
+	}
+</style>
+
+
+<body>
+	<br>
+	<center>
+		<img src="https://www.budget.com/budgetWeb/images/newlayout/budgetLogoNew1.png" width="400" height="171">
+		<center>
+			<div class="container" id="div">
+				<h3>
+					<center> <b>
+							<font face="Segoe UI" size="5">ADMNISTRAR CLIENTE
+						</b> </font>
+					</center>
+				</h3>
+				<form action="#" th:action="@{/empleados/administrarCliente}" th:method="GET">
+					<center> <input type="submit" value="Continuar" class="btn btn-success"></center>
+				</form>
+			</div><br>
+			<div class="container" id="div2">
+				<h3>
+					<center> <b>
+							<font face="Segoe UI" size="5">ADMINISTRAR VEHÍCULO
+						</b> </font>
+					</center>
+				</h3>
+				<form action="#" th:action="@{/empleados/administrarVehiculo}" th:method="GET">
+					<center> <input type="submit" value="Continuar" class="btn btn-success"></center>
+				</form>
+			</div><br>
+			<div class="container" id="div3">
+				<h3>
+					<center> <b>
+							<font face="Segoe UI" size="5">REPORTES
+						</b> </font>
+					</center>
+				</h3>
+				<form action="#" th:action="@{/reportes/reservaReporte}" th:method="GET">
+					<center> <input type="submit" value="Generar Reportes" class="btn btn-success"></center>
+				</form>
+			</div><br>
+		</center>
+		</img>
+	</center>
+</body>
+
+</html>
