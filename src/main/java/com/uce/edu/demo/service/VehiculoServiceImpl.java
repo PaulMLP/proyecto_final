@@ -69,9 +69,11 @@ public class VehiculoServiceImpl implements IVehiculoService {
 	}
 
 	@Override
-	public List<VehiculoVipReporte> buscarVehiculosVip(int mes, int anio) {
+	public List<VehiculoVipReporte> buscarVehiculosVip(String fechaCadena) {
 		// TODO Auto-generated method stub
-		LocalDateTime fecha = LocalDateTime.of(anio, mes, 1, 0, 0);
+		String[] fechaArray = fechaCadena.split("-");
+		LocalDateTime fecha = LocalDateTime.of(Integer.parseInt(fechaArray[0]), Integer.parseInt(fechaArray[1]),1,0,0);
+		System.out.println(fecha.toString());
 		LocalDateTime fechaAux = fecha.plusMonths(1);
 		List<VehiculoVipReporte> listaVehiculosVIP = this.vehiculoRepository.buscarVehiculosVip(fecha, fechaAux);
 

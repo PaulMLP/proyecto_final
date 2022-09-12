@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.uce.edu.demo.repository.modelo.Cliente;
 import com.uce.edu.demo.repository.modelo.Reserva;
-import com.uce.edu.demo.repository.modelo.Vehiculo;
 import com.uce.edu.demo.repository.modelo.VehiculoCampo;
 import com.uce.edu.demo.repository.modelo.VehiculoLigero;
 import com.uce.edu.demo.service.ClienteGestorServiceImpl;
+import com.uce.edu.demo.service.IClienteService;
 import com.uce.edu.demo.service.IVehiculoService;
 
 @Controller
@@ -30,10 +31,14 @@ public class ClienteController {
 	private ClienteGestorServiceImpl clienteGestorServiceImpl;
 
 	@Autowired
+	private IClienteService clienteService;
+
+	@Autowired
 	private IVehiculoService vehiculoService;
 
 	private Reserva reserva;
-	
+	private Cliente cliente;
+
 	@GetMapping("/home")
 	public String principal(Model modelo) {
 		List<VehiculoCampo> vehiculosMarca = this.vehiculoService.buscarCampos("marca");
@@ -41,6 +46,43 @@ public class ClienteController {
 		modelo.addAttribute("vehiculosMarca", vehiculosMarca);
 		modelo.addAttribute("vehiculosModelo", vehiculosModelo);
 		return "home";
+	}
+
+	@GetMapping("/volver")
+	public String redireccionHome(Model modelo) {
+		return "redirect:/clientes/home";
+	}
+
+	@GetMapping("/registra/o/actualiza")
+	public String registrarCliente(@RequestParam("cedula") String cedula, Model modelo) {
+		Cliente cliente = this.clienteService.buscarClientePorCedula(cedula);
+		if (cliente == null) {
+			Cliente c = new Cliente();
+			c.setCedula(cedula);
+			modelo.addAttribute("cliente", c);
+			return "registro";
+		} else {
+			this.cliente = cliente;
+			System.out.println("********" + cliente);
+			modelo.addAttribute("cliente", this.cliente);
+			return "actualizar";
+		}
+	}
+
+	@GetMapping("/actualizarCliente")
+	public String actualizarCliente(Cliente cliente) {
+		cliente.setId(this.cliente.getId());
+		cliente.setCedula(this.cliente.getCedula());
+		cliente.setRegistro(this.cliente.getRegistro());
+		System.out.println("********" + cliente);
+		this.clienteService.actualizar(cliente);
+		return "redirect:/clientes/home";
+	}
+
+	@PostMapping("/registrarCliente")
+	public String insertarCliente(Cliente cliente) {
+		this.clienteService.insertar(cliente);
+		return "redirect:/clientes/home";
 	}
 
 	@GetMapping("/buscar/vehiculos")
@@ -62,13 +104,10 @@ public class ClienteController {
 			Model modelo) {
 		// verificar que exista el cliente y el vehiculo
 		if (this.clienteGestorServiceImpl.datosValidos(placa, cedula)) {
-			Vehiculo v = this.vehiculoService.buscarPorPlaca(placa);
-			// verificar que exista una fecha disponible del vehiculo y calcular una
-			String mns = this.clienteGestorServiceImpl.fechaDisponible(v, fechaInicio, fechaFin);
 			Reserva reserva = this.clienteGestorServiceImpl.disponibilidad(placa, cedula, fechaInicio, fechaFin);
-			modelo.addAttribute("reserva",reserva);
+			modelo.addAttribute("reserva", reserva);
 			this.reserva = reserva;
-			return "registrar";
+			return "cobro";
 		} // si no existe el cliente o el vehiculo
 		else {
 			modelo.addAttribute("reserva", null);

@@ -121,7 +121,7 @@
 		float: none;
 		text-align: center;
 		border-radius: 4px;
-		color: black;	
+		color: black;
 	}
 
 	.btn {
@@ -259,13 +259,16 @@
 			</a>
 
 			<body id="body3">
+
 				<button class="btn" id="btnReg" onclick="document.getElementById('id01').style.display='block'"
 					style="width:auto;">
 					<font color="black" face="Arial" size="3"> <b> Registrarse </b> </font>
 				</button>
+
 				<div id="id01" class="modal">
 
-					<form class="modal-content animate" action="/action_page.php" method="post">
+					<form class="modal-content animate" action="#" th:action="@{/clientes/registra/o/actualiza}"
+						th:object="${cliente}" th:method="GET">
 						<div class="imgcontainer">
 							<span onclick="document.getElementById('id01').style.display='none'" class="close"
 								title="Close Modal">&times;</span>
@@ -275,13 +278,10 @@
 
 						<div class="container">
 							<label for="uname"><b>Número de Cédula</b></label>
-							<input type="text" placeholder="Ingrese su cédula" name="cedula" required>
+							<input type="text" placeholder="Ingrese su cédula" name="cedula" required="true">
 							<center>
 								<button type="submit">
-									<font color="black" face="Arial" size="4"> Registrarse </font>
-								</button>
-								<button type="submit">
-									<font color="black" face="Arial" size="4"> Actualizar</font>
+									<font color="black" face="Arial" size="4"> Registrarse / Actualizar </font>
 								</button>
 							</center>
 						</div>

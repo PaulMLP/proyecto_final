@@ -10,7 +10,7 @@ public interface IClienteService {
 
 	public boolean insertar(Cliente cliente);
 
-	public boolean actualizar(Cliente cliente);
+	public void actualizar(Cliente cliente);
 
 	public void eliminar(Integer id);
 

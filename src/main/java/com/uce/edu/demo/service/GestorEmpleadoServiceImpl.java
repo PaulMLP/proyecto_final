@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.uce.edu.demo.repository.IClienteRepository;
+import com.uce.edu.demo.repository.modelo.Cliente;
 import com.uce.edu.demo.repository.modelo.Reserva;
 import com.uce.edu.demo.repository.modelo.Vehiculo;
 
@@ -21,6 +23,15 @@ public class GestorEmpleadoServiceImpl implements IGestorEmpleadoService {
 	@Autowired
 	private IClienteGestorService clienteGestorService;
 
+	@Autowired
+    private IClienteRepository clienteRepository;
+
+    @Override
+    public void insertarCliente(Cliente cliente) {
+        cliente.setRegistro("E");
+        this.clienteRepository.insertar(cliente);
+    }
+    
 	@Override
 	public List<Vehiculo> verPorMarca(String marca) {
 		// TODO Auto-generated method stub

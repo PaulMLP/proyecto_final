@@ -62,7 +62,7 @@
 		border: 3px solid black;
 		border-radius: 10px;
 		position: absolute;
-		bottom: 20%;
+		bottom: 25%;
 		right: 100px
 	}
 
@@ -127,82 +127,68 @@
 </style>
 
 <body>
-
 	<div class="row">
 		<div class="col-75">
 			<div class="container">
 				<h2>
 					<center>
-						<font color="orange"> GENERAR RESERVA </font>
+						<font color="orange"> INFORMACIÓN CLIENTE </font>
 					</center>
 				</h2><br>
-				<form action="#" th:action="@{/clientes/cobro/reserva}" th:method="POST">
-					<div class="row">
-						<div class="col-50">
-							<h3>
-								<font color="orange">
-									<center>DATOS </center>
-								</font>
-							</h3>
-							<label>
-								<font color="#2C7AD4" face="Segoe UI" size="5"> <b>Placa</b> </font>
-							</label>
-							<label>
-								<font face="Segoe UI" size="5">
-									<td th:text="${reserva.vehiculo.placa}" />
-								</font>
-							</label>
-							<label>
-								<font color="#2C7AD4" face="Segoe UI" size="5"> <b> Marca </b> </font>
-							</label>
-							<label>
-								<font face="Segoe UI" size="5">
-									<td th:text="${reserva.vehiculo.marca}" />
-								</font>
-							</label>
-							<label>
-								<font color="#2C7AD4" face="Segoe UI" size="5"> <b> Modelo </b></font>
-							</label>
-							<label>
-								<font face="Segoe UI" size="5">
-									<td th:text="${reserva.vehiculo.modelo}" />
-								</font>
-							</label>
-						</div>
-
-						<div class="col-50">
-							<h3>
-								<font color="orange">
-									<center>PAGO</center>
-								</font>
-							</h3><br>
-							<label><b>
-									<font color="red" face="Segoe UI" size="2">*Nota: <u>Aceptamos todas las
-											Tarjetas de
-											Crédito</u> </font>
-								</b></label>
-							<label>
-								<font color="#2C7AD4" face="Segoe UI" size="5"><b>Número de Tarjeta</b></font>
-							</label>
-							<input type="text" id="ccnum" name="tarjeta"
-								placeholder="Ingrese el número de tarjeta..."><br>
-							<label>
-								<font color="#2C7AD4" face="Segoe UI" size="4"><b>Total a Pagar</b></font>
-							</label>
-							<label>
-								<font color="black" face="Segoe UI" size="4">
-									<b>$
-										<td th:text="${reserva.cobro.valorTotalAPagar}" />
-									</b>
-								</font>
-							</label>
-						</div>
-
+				<div class="row">
+					<div class="col-50">
+						<label>
+							<font color="#2C7AD4" face="Segoe UI" size="5"> <b>Cédula</b> </font>
+						</label>
+						<label>
+							<font face="Segoe UI" size="5">
+								<td th:text="${cliente.cedula}" />
+							</font>
+						</label>
+						<label>
+							<font color="#2C7AD4" face="Segoe UI" size="5"> <b> Nombre </b> </font>
+						</label>
+						<label>
+							<font face="Segoe UI" size="5">
+								<td th:text="${cliente.nombre}" />
+							</font>
+						</label>
+						<label>
+							<font color="#2C7AD4" face="Segoe UI" size="5"> <b> Apellido </b></font>
+						</label>
+						<label>
+							<font face="Segoe UI" size="5">
+								<td th:text="${cliente.apellido}" />
+							</font>
+						</label>
 					</div>
-					<center>
-						<input type="submit" value="Continuar" class="btn">
-					</center>
-				</form>
+					<div class="col-50">
+						<label>
+							<font color="#2C7AD4" face="Segoe UI" size="5"> <b> Fecha Nacimiento </b></font>
+						</label>
+						<label>
+							<font face="Segoe UI" size="5">
+								<td th:text="${cliente.fechaNacimiento}" />
+							</font>
+						</label>
+						<label>
+							<font color="#2C7AD4" face="Segoe UI" size="5"> <b> Genero </b></font>
+						</label>
+						<label>
+							<font face="Segoe UI" size="5">
+								<td th:text="${cliente.genero}" />
+							</font>
+						</label>
+						<label>
+							<font color="#2C7AD4" face="Segoe UI" size="5"> <b> Registro </b></font>
+						</label>
+						<label>
+							<font face="Segoe UI" size="5">
+								<td th:text="${cliente.registro}" />
+							</font>
+						</label>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

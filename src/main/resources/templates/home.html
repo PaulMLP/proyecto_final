@@ -13,7 +13,7 @@
 <style>
 	body {
 		height: 665px;
-		background-image: url(https://th.bing.com/th/id/R.51520ca916740f61f1e2c7c324fa0c11?rik=5AnHV7VXXbtRFQ&riu=http%3a%2f%2fwww.rentadeautosdf.com.mx%2fimages%2frenta-de-autos-DF.jpg&ehk=KcckXpi4kYBkj2hXsPSiEbhZTr7XofITcDvPuEF3r4Y%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1);
+		background-image: url(https://memolira.com/wp-content/uploads/2018/07/renta-de-autos.jpg);
 		background-size: 10rem;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
@@ -41,8 +41,11 @@
 		background-image: url(https://th.bing.com/th/id/R.6004e613949e69ed3316509d7a1da3a6?rik=yMkQz4eTQ2qO%2bw&pid=ImgRaw&r=0);
 		border-radius: 10px;
 		background-color: #FFFFFF;
+		position: absolute;
 		padding: 20px;
 		width: 30%;
+		right: 550px;
+		bottom: 20%;
 	}
 </style>
 
@@ -71,15 +74,15 @@
 						</label>
 						<select id="marca" name=marca>
 							<option th:each="vmarca:${vehiculosMarca}" th:text="${vmarca.campo}"></option>
-						</select> <br />
-						<br />
-						<br />
+						</select> <br>
+						<br>
+						<br>
 						<label>
 							<font color="orange" face="Arial" size="6"> Modelo: </font>
 						</label>
 						<select id="modelo" name=modelo>
 							<option th:each="vmodelo:${vehiculosModelo}" th:text="${vmodelo.campo}"> </option>
-						</select> <br />
+						</select> <br>
 
 						<input type="submit" value="BUSCAR" class="btn btn-info">
 					</form>

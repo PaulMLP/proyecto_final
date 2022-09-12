@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<form th:action="@{/empleados}" th:object="${ingresarVehiculo}" th:method="POST">
+		<table>
+			<tr>
+				<td> <label> placa: </label></td>
+				<td> <input type="text" id="placa" value="Inserte codigo barras" th:field="${ingresarVehiculo.placa}">
+				</td>
+			</tr>
+			<tr>
+				<td> <label> modelo: </label></td>
+				<td> <input type="text" id="modelo" value="Inserte el nombre" th:field="${ingresarVehiculo.modelo}">
+				</td>
+			</tr>
+			<tr>
+				<td> <label> marca: </label></td>
+				<td> <input type="text" id="marca" value="Inserte el categoria" th:field="${ingresarVehiculo.marca}">
+				</td>
+			</tr>
+			<tr>
+				<td> <label> anioFabricacion: </label></td>
+				<td> <input type="text" id="anioFabricacion" value="Inserte el stock"
+						th:field="${ingresarVehiculo.anioFabricacion}"> </td>
+			</tr>
+			<tr>
+				<td> <label> paisFabricacion: </label></td>
+				<td> <input type="text" id="paisFabricacion" value="Inserte el precio"
+						th:field="${ingresarVehiculo.paisFabricacion}"> </td>
+			</tr>
+			<tr>
+				<td> <label> cilindraje: </label></td>
+				<td> <input type="text" id="cilindraje" value="Inserte el precio"
+						th:field="${ingresarVehiculo.cilindraje}"> </td>
+			</tr>
+			<tr>
+				<td> <label> avaluo: </label></td>
+				<td> <input type="text" id="avaluo" value="Inserte el precio" th:field="${ingresarVehiculo.avaluo}">
+				</td>
+			</tr>
+
+			<tr>
+				<td> <label> estado: </label></td>
+				<td> <input type="text" id="estado" value="Inserte el precio" th:field="${ingresarVehiculo.estado}">
+				</td>
+			</tr>
+
+			<tr>
+				<td> <label> valorDia: </label></td>
+				<td> <input type="text" id="valorDia" value="Inserte el precio" th:field="${ingresarVehiculo.valorDia}">
+				</td>
+			</tr>
+
+		</table>
+
+		<input type="submit" value="GUARDAR">
+	</form>
+</body>
+
+</html>

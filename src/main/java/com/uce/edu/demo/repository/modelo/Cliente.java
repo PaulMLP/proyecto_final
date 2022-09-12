@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -32,6 +34,7 @@ public class Cliente {
 	@Column(name = "clie_apellido")
 	private String apellido;
 
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	@Column(name = "clie_fecha_nacimiento")
 	private LocalDateTime fechaNacimiento;
 
@@ -44,11 +47,10 @@ public class Cliente {
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Reserva> reservas;
 
-	
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", registro=" + registro+"]";
+				+ ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", registro=" + registro + "]";
 	}
 
 	// SET y GET

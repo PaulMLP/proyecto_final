@@ -2,6 +2,7 @@ package com.uce.edu.demo.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,6 @@ public class ReservaServiceImpl implements IReservaService {
 	@Override
 	public void reservar(Reserva reserva) {
 		this.reservaRepository.insertar(reserva);
-	}
-
-	@Override
-	public List<ReservaLigeroReporte> reporteReservas(LocalDateTime fechaIncio, LocalDateTime fechaFin) {
-		// TODO Auto-generated method stub
-		return this.reservaRepository.reporteReservas(fechaIncio, fechaFin);
 	}
 
 	@Override
@@ -49,6 +44,20 @@ public class ReservaServiceImpl implements IReservaService {
 	public void eliminarReservaPorId(Integer id) {
 		// TODO Auto-generated method stub
 		this.reservaRepository.eliminarReservaPorId(id);
+	}
+
+	@Override
+	public List<ReservaLigeroReporte> reporteReservas(LocalDateTime fechaIncio, LocalDateTime fechaFin) {
+		List<ReservaLigeroReporte> lista = this.reservaRepository.reporteReservas(fechaIncio, fechaFin);
+		List<ReservaLigeroReporte> listaCambiada = lista.parallelStream().map(reserva -> {
+			if (reserva.getEstado().equalsIgnoreCase("G"))
+				reserva.setEstado("Generada");
+			else
+				reserva.setEstado("Ejecutada");
+			return reserva;
+		}).collect(Collectors.toList());
+
+		return listaCambiada;
 	}
 
 }

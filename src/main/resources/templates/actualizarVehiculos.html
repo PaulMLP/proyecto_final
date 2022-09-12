@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+        <table>
+        	<tr>
+                <td> <label> Placa: </label></td>
+                <td> <label th:text = "${vehiculoEncontrado.placa}"> </label> </td>
+            </tr>
+            <tr>
+                <td> <label> Modelo: </label></td>
+                <td> <label th:text = "${vehiculoEncontrado.modelo}"> </label> </td>
+            </tr>
+            <tr>
+                <td> <label> Marca: </label></td>
+                <td> <label th:text = "${vehiculoEncontrado.marca}"> </label>  </td>
+            </tr>
+            <tr>
+                <td> <label> Año Fabricacion: </label></td>
+                <td> <label th:text = "${vehiculoEncontrado.anioFabricacion}"> </label> </td>
+            </tr>
+            <tr>
+                <td> <label> Pais Fabricacion: </label></td>
+                <td> <label th:text = "${vehiculoEncontrado.paisFabricacion}"> </label> </td>
+            </tr>
+            <tr>
+                <td> <label> Cilindraje: </label></td>
+                <td> <label th:text = "${vehiculoEncontrado.cilindraje}">  </label> </td>
+            </tr>
+            
+             <tr>
+                <td> <label> Avaluo: </label></td>
+                <td> <label th:text = "${vehiculoEncontrado.avaluo}">  </label> </td>
+            </tr>
+            
+             <tr>
+                <td> <label> Estado: </label></td>
+                <td> <label th:text = "${vehiculoEncontrado.estado}">  </label> </td>
+            </tr>
+            
+             <tr>
+                <td> <label> Valor Dia: </label></td>
+                <td> <label th:text = "${vehiculoEncontrado.valorDia}">  </label> </td>
+            </tr>
+        
+        </table>
+        
+
+      <form th:action="@{/empleados/{placaVehiculo}(placaVehiculo=${vehiculoEncontrado.placa})}" th:object ="${actualizarV}" th:method ="GET" >
+    
+        <table>
+        	
+            <tr>
+                <td> <label> Modelo: </label></td>
+                <td> <input type="text" id="modelo"  th:field="${actualizarV.modelo}"> </td>
+            </tr>
+            <tr>
+                <td> <label> Marca: </label></td>
+                <td> <input type="text" id="marca"   th:field="${actualizarV.marca}"> </td>
+            </tr>
+            	<tr>
+                <td> <label> Año Fabricacion: </label></td>
+                <td> <input type="text" id="anioFabricacion"   th:field="${actualizarV.anioFabricacion}"> </td>
+            </tr>
+            <tr>
+                <td> <label> Pais Fabricacion: </label></td>
+                <td> <input type="text" id="paisFabricacion"  th:field="${actualizarV.paisFabricacion}"> </td>
+            </tr>
+            <tr>
+                <td> <label> Cilindraje: </label></td>
+                <td> <input type="text" id="cilindraje"   th:field="${actualizarV.cilindraje}"> </td>
+            </tr>
+            	<tr>
+                <td> <label> Avaluo: </label></td>
+                <td> <input type="text" id="avaluo"   th:field="${actualizarV.avaluo}"> </td>
+            </tr>
+            <tr>
+                <td> <label> Estado: </label></td>
+                <td> <input type="text" id="estado"  th:field="${actualizarV.estado}"> </td>
+            </tr>
+            <tr>
+                <td> <label> Valor Dia: </label></td>
+                <td> <input type="text" id="valorDia"   th:field="${actualizarV.valorDia}"> </td>
+            </tr>
+          
+        </table>
+
+        <input type="submit" value="ACTUALIZAR">
+    </form>
+</body>
+
+</html>

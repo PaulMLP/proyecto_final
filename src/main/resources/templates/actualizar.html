@@ -1,0 +1,32 @@
+<div class="container">
+		<h3>
+			<center> <b>
+					<font face="Segoe UI" size="5">ACTUALIZACION DE DATOS
+				</b> </font>
+			</center>
+		</h3>
+		<form action="#" th:action="@{/clientes/actualizarCliente}" th:object="${cliente}" th:method="GET">
+			<label for="fname"> <b>
+					<font face="Segoe UI" size="5"> NOMBRE
+				</b> </font></label>
+			<input type="text" id="nombre" name="nombre" th:field="*{nombre}" placeholder="Ingrese el nombre...">
+			
+			<label for="lname"><b>
+					<font face="Segoe UI" size="5"> APELLIDO
+				</b> </font></label>
+			<input type="text" id="cedula" name="apellido" th:field="*{apellido}" placeholder="Ingrese el apellido...">
+			<label for="lname"><b>
+					<font face="Segoe UI" size="5"> FECHA NACIMIENTO
+				</b> </font></label>
+			<input type="datetime-local" id="fechaN" name="fechaNacimiento" th:field="*{fechaNacimiento}"
+				placeholder="Ingrese fecha nacimiento...">
+
+			<label for="lname"><b>
+					<font face="Segoe UI" size="5"> GENERO
+				</b> </font></label>
+			<input type="text" id="genero" name="genero" th:field="*{genero}" placeholder="Ingrese genero...">
+
+			<center> <input type="submit" value="ACTUALIZAR"></center>
+		</form>
+
+	</div>

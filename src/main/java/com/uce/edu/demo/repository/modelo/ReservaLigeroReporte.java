@@ -3,6 +3,8 @@ package com.uce.edu.demo.repository.modelo;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ReservaLigeroReporte implements Serializable{
 
 	/**
@@ -12,7 +14,9 @@ public class ReservaLigeroReporte implements Serializable{
 	
 	private String numero;
 	private String estado;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private LocalDateTime fechaInicio;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private LocalDateTime fechaFin;
 	private String clienteCedula;
 	private String clienteNombre;

@@ -208,7 +208,7 @@ class ProyectoFinalApplicationTests {
 	@Test
 	void reporteVehiculosVIPTest() {
 		// Reporte Vehiculos VIP
-		List<VehiculoVipReporte> listaVehiculosVip = this.vehiculoService.buscarVehiculosVip(10, 2022);
+		List<VehiculoVipReporte> listaVehiculosVip = this.vehiculoService.buscarVehiculosVip("2022-09");
 		listaVehiculosVip.forEach(c -> LOG.info(c));
 
 		assertNotEquals(listaVehiculosVip.size(), 0);
@@ -223,6 +223,5 @@ class ProyectoFinalApplicationTests {
 
 		assertNotNull(a);
 	}
-	
-	
+
 }

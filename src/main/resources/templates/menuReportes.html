@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<title>Menu Reportes</title>
+</head>
+
+<style>
+	body {
+		height: 660px;
+		background-image: url(https://learningbeelearningcenter.com/wp-content/uploads/2018/01/Humanitarian-Background-1900-x-700.jpg);
+		background-size: 10rem;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: 100% 100%;
+		background-color: transparent;
+	}
+
+	select {
+		width: 40%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+	label {
+		color: white;
+		padding: 8px;
+		font-family: Arial;
+	}
+
+	#div {
+		border-radius: 10px;
+		background-color: #D2F5DE;
+		border: 3px solid black;
+		padding: 20px;
+		width: 50%;
+	}
+
+	#div2 {
+		border-radius: 10px;
+		background-color: #F5D6A6;
+		border: 3px solid black;
+		padding: 20px;
+		width: 50%;
+	}
+
+	#div3 {
+		border-radius: 10px;
+		background-color: #F5B50C;
+		border: 3px solid black;
+		padding: 20px;
+		width: 50%;
+	}
+</style>
+
+
+<body>
+	<br>
+	<br>
+	<br>
+	<center>
+		<img src="https://th.bing.com/th/id/R.bf46ff8fdb67d6d3ab010d0ada9a181f?rik=%2b2Dd3EPXMWuoSA&riu=http%3a%2f%2fwww.pgairport.ca%2fwp-content%2fuploads%2f2016%2f01%2fbudgetLogoNew1-1.png&ehk=Pgjw5QiamFAQttJSrd6XQqLZXkzHlXt92tKTjtEOjTs%3d&risl=&pid=ImgRaw&r=0"
+			width="400" height="171">
+		<center>
+			<div class="container" id="div">
+				<h3>
+					<center> <b>
+							<font face="Segoe UI" size="5">REALIZAR REPORTE FECHAS
+						</b> </font>
+					</center>
+				</h3>
+				<form action="#" th:action="@{/reportes/reporteReservas}" th:method="GET">
+					<label for="lname"><b>
+							<font color="black" face="Segoe UI" size="5">FECHA INICIO:
+						</b> </font></label>
+					<input type="datetime-local" id="fechaI" name="fechaInicio" required="true"
+						placeholder="Ingrese fecha de inicio...">
+					<label for="lname"><b>
+							<font color="black" face="Segoe UI" size="5">FECHA FIN:
+						</b> </font></label>
+					<input type="datetime-local" id="fechaF" name="fechaFin" required="true"
+						placeholder="Ingrese fecha fin...">
+					<center> <input type="submit" value="Realizar Reporte" class="btn btn-info"></center>
+				</form>
+			</div><br>
+			<div class="container" id="div2">
+				<h3>
+					<center> <b>
+							<font face="Segoe UI" size="5">REALIZAR REPORTE CLIENTES VIP
+						</b> </font>
+					</center>
+				</h3>
+				<form action="#" th:action="@{/reportes/reporteClientes}" th:method="GET">
+					<center> <input type="submit" value="Realizar Reporte" class="btn btn-info"></center>
+				</form>
+			</div><br>
+			<div class="container" id="div3">
+				<h3>
+					<center> <b>
+							<font face="Segoe UI" size="5">REALIZAR REPORTE VEHÍCULOS VIP
+						</b> </font>
+					</center>
+				</h3>
+				<form action="#" th:action="@{/reportes/reporteVehiculos}" th:method="GET">
+					<label for="lname"><b>
+							<font color="black" face="Segoe UI" size="5">ELIJA EL MES Y EL AÑO
+						</b> </font></label><br>
+					<input type="month" id="fechaI" name="fecha" required="true"><br><br>
+					<center> <input type="submit" value="Realizar Reporte" class="btn btn-info"></center>
+				</form>
+			</div>
+		</center>
+		</img>
+	</center>
+</body>
+
+</html>

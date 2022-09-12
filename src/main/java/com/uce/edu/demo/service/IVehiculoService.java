@@ -17,7 +17,7 @@ public interface IVehiculoService {
 	public Vehiculo buscarPorPlaca(String placa);
 
 	public List<VehiculoCampo> buscarCampos(String campo);
-	
+
 	public int insertar(Vehiculo vehiculo);
 
 	public List<Vehiculo> buscarMarca(String marca);
@@ -28,7 +28,7 @@ public interface IVehiculoService {
 
 	public void eliminar(Integer id);
 
-	public List<VehiculoVipReporte> buscarVehiculosVip(int mes, int anio);
+	public List<VehiculoVipReporte> buscarVehiculosVip(String fecha);
 
 	public void ingresarVehiculo(String placa, String modelo, String marca, Integer anioFabricacion,
 			String paisFabricacion, String cilindraje, BigDecimal avaluo, BigDecimal valorPorDia);

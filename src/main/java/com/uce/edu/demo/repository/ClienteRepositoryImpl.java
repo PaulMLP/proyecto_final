@@ -39,14 +39,10 @@ public class ClienteRepositoryImpl implements IClienteRepository {
 	}
 
 	@Override
-	public boolean actualizar(Cliente cliente) {
+	public void actualizar(Cliente cliente) {
 		// TODO Auto-generated method stub
-		try {
-			this.entityManager.merge(cliente);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+		this.entityManager.merge(cliente);
+
 	}
 
 	@Override
@@ -87,8 +83,7 @@ public class ClienteRepositoryImpl implements IClienteRepository {
 	@Override
 	public List<ClienteVipReporte> buscarClienteReservasPagadas() {
 		String SQL = "SELECT NEW com.uce.edu.demo.repository.modelo.ClienteVipReporte(c.cedula, c.nombre, r.numero, co.valorIva, co.valorTotalAPagar) "
-				+ "FROM Cliente c JOIN c.reservas r JOIN r.cobro co "
-				+ "ORDER BY co.valorTotalAPagar DESC";
+				+ "FROM Cliente c JOIN c.reservas r JOIN r.cobro co " + "ORDER BY co.valorTotalAPagar DESC";
 		TypedQuery<ClienteVipReporte> myQuery = this.entityManager.createQuery(SQL, ClienteVipReporte.class);
 
 		return myQuery.getResultList();

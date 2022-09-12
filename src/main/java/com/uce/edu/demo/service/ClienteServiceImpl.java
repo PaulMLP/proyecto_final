@@ -14,7 +14,7 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Autowired
 	private IClienteRepository clienteRepository;
-	
+
 	@Override
 	public Cliente buscarPorId(Integer id) {
 		// TODO Auto-generated method stub
@@ -24,6 +24,7 @@ public class ClienteServiceImpl implements IClienteService {
 	@Override
 	public boolean insertar(Cliente cliente) {
 		// TODO Auto-generated method stub
+		cliente.setRegistro("C");
 		return this.clienteRepository.insertar(cliente);
 	}
 
@@ -33,32 +34,29 @@ public class ClienteServiceImpl implements IClienteService {
 		return this.clienteRepository.buscarClientePorCedula(cedula);
 	}
 
-
+	// 3.b
 	@Override
 	public List<ClienteVipReporte> buscarClienteReservasPagadas() {
 		// TODO Auto-generated method stub
 		return this.clienteRepository.buscarClienteReservasPagadas();
 	}
-	
-	//2.b Buscar Cliente
+
+	// 2.b Buscar Cliente
 	@Override
 	public List<Cliente> buscarClientePorApellido(String apellido) {
 		// TODO Auto-generated method stub
 		return this.clienteRepository.buscarClientePorApellido(apellido);
 	}
-	
-	//2.b Actualizar Cliente
+
+	// 2.b Actualizar Cliente
 	@Override
-	public boolean actualizar(Cliente cliente) {
+	public void actualizar(Cliente cliente) {
 		// TODO Auto-generated method stub
-		if (this.buscarClientePorCedula(cliente.getCedula()) != null) {
-			//Si existe el cliente se actualiza
-			return this.clienteRepository.actualizar(cliente);
-		}
-		return false;
+		this.clienteRepository.actualizar(cliente);
+
 	}
-	
-	//2.b Eliminar Cliente
+
+	// 2.b Eliminar Cliente
 	@Override
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
